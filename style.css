@@ -1,0 +1,101 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: rgba(25, 25, 25, 0.9);
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  #app-header {
+    background-color: #2c3e50;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    -webkit-app-region: drag;
+  }
+  
+  h1 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  
+  #window-controls {
+    display: flex;
+    -webkit-app-region: no-drag;
+  }
+  
+  #window-controls button {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 18px;
+    padding: 0 5px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #window-controls button:hover {
+    color: #3498db;
+  }
+  
+  #close-btn:hover {
+    color: #e74c3c;
+  }
+  
+  main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow-y: auto;
+  }
+  
+  #quote-container {
+    text-align: center;
+  }
+  
+  #quote {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+  
+  #author {
+    font-size: 14px;
+    font-style: italic;
+    color: #bdc3c7;
+  }
+  
+  /* Add smooth scrollbar for webkit browsers */
+  main::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  main::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  main::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+  }
+  
+  main::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+  }

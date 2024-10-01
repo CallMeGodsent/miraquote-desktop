@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings</title>
+  <link rel="stylesheet" href="settings.css">
+</head>
+<body>
+  <header>
+    <h1>MiraQuote Desktop (1.2) Settings</h1>
+    <div id="window-controls">
+      <button id="minimize-btn" title="Minimize">➖</button>
+      <button id="close-btn" title="Close">❌</button>
+    </div>
+  </header>
+
+ 
+  <main>
+    <form id="api-key-form" class="form-inline">
+      <label for="api-key">Enter API Key:</label>
+      <input type="text" id="api-key" required>
+      <button type="submit">Save API Key</button>
+    </form>
+  
+    <form id="quote-type-form" class="form-inline">
+      <label for="quote-type">Enter Quote Preference (e.g., love, wisdom):</label>
+      <input type="text" id="quote-type" required>
+      <button type="submit">Save Quote Type</button>
+    </form>
+  </main>
+  
+  <p id="status-message"></p>
+  <p id="qstatus-message"></p>
+  
+
+  <nav>
+    <a href="index.html" class="back" title="Settings">Back To Home</a>
+    <button id="about-btn">About</button> <!-- About button -->
+  </nav>
+
+
+
+<!-- Update Quotes Section -->
+<section id="update-quotes-section">
+    <h2>Update Quotes</h2>
+    <p>Click the button below to fetch the latest quotes and update your local collection.</p>
+    <button id="update-quotes-btn" class="back">Update Quotes</button>
+    <p id="update-status"></p>
+</section>
+
+<script>
+    const updateButton = document.getElementById('update-quotes-btn');
+    const statusElement = document.getElementById('update-status');
+
+    updateButton.addEventListener('click', async () => {
+        statusElement.textContent = 'Updating quotes...';
+
+        // Call the IPC method to update quotes
+        const result = await window.electronAPI.updateQuotes();
+
+        if (result.success) {
+            statusElement.textContent = 'Quotes updated successfully!';
+        } else {
+            statusElement.textContent = `Failed to update quotes: ${result.message}`;
+        }
+    });
+</script>
+
+
+
+
+
+
+
+
+
+<!-- Hidden About Section -->
+<section id="about-info" style="display: none;">
+    <h2>About This App</h2>
+    <p>MiraQuote Desktop is a user-friendly application designed for viewing quotes online and offline; anytime. So of its features are:</p>
+    
+    <h3>Features</h3>
+    <ul>
+        <li><strong>Save API Key:</strong> Store your API key securely for seamless integration</li>
+        <li><strong>Random Quotes:</strong> Fetch random quotes at your convenience, enriching your experience with inspirational content.</li>
+        <li><strong>User-Friendly Interface:</strong> Enjoy a simple and intuitive interface that makes managing your quotes easy.</li>
+        <li><strong>Cross-Platform Support:</strong> Compatible with multiple operating systems, ensuring a consistent experience across devices.</li>
+    </ul>
+    
+    <h3>Getting Started</h3>
+    <p>To begin using the app, follow these simple steps:</p>
+    <ol>
+        <li>Launch the application.</li>
+        <li>In the settings screen at the top, enter your MIraQuote api key from Miragek.com.</li>
+        <li>Whenever you are online, the offline quotes we get updated once in a while to get fresh ones.</li>
+    </ol>
+    
+    <h3>Troubleshooting</h3>
+    <p>If you encounter any issues, consider the following solutions:</p>
+    <ul>
+        <li>Ensure your API key is valid and properly entereds</li>
+        <li>Failed to update quotes: Invalid API response format: You will need to first check your Quote Preferance. Try using something like life,love</li>
+        <li>Check your internet connection for stable access to the quote APIs.</li>
+        <li>Restart the application if any functionality is unresponsive.</li>
+    </ul>
+
+    <h3>Documentation</h3>
+    <p>For detailed instructions and advanced features, refer to the <a href="#" id="read-docs-btn" style="color:red;">official documentation</a>.</p>
+    <script>
+        document.getElementById('read-docs-btn').addEventListener('click', (event) => {
+            event.preventDefault(); // Prevent the default link behavior
+            window.electronAPI.openUrl('https://quotes.miragek.com/docs')
+                .then(() => {
+                    alert('The documentation has been opened in your default browser! 📖');
+                })
+                .catch(err => alert(err));
+        });
+    </script>
+    
+
+</section>
+
+
+   
+
+  
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Call the IPC method to set full screen
+      window.electronAPI.toggleFullscreen().catch(err => alert(err));
+    });
+  </script>
+  
+  
+
+  <script src="settings.js"></script> <!-- Your JavaScript for handling events -->
+</body>
+</html>

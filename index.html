@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inspirational Quotes</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header id="app-header">
+    <h1>MiraQuote Desktop</h1>
+    <div id="window-controls">
+      <button id="settings-btn" title="Settings" onclick="window.location.href='settings.html';">⚙️</button>
+      <button id="reload-btn" title="New Quote">🔄</button>
+      <button id="minimize-btn" title="Minimize">➖</button>
+      <button id="close-btn" title="Close">❌</button>
+    </div>
+  </header>
+  <main>
+    <div id="quote-container">
+      <p id="quote"></p>
+      <p id="author"></p>
+    </div>
+  </main>
+  <script src="renderer.js"></script>
+</body>
+</html>

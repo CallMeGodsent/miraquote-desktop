@@ -1,0 +1,51 @@
+{
+  "name": "miraquote",
+  "version": "1.2.0",
+  "description": "An official app for the miragek quotes API for desktop",
+  "main": "main.js",
+  "author": {
+    "name": "Miragek",
+    "email": "miraquotes@miragek.com",
+    "url": "https://quotes.miragek.com/docs"
+  },
+  "homepage": "https://quotes.miragek.com/docs",
+  "build": {
+    "appId": "com.miragek.miraquote",
+    "files": [
+      "quotes.json",
+      "api_key.txt",
+      "quote_prefer.txt",
+      "assets/**/*"
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "assets/icon.ico"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb",
+        "rpm"
+      ],
+      "icon": "assets/icon.png"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "callmegodsent",
+        "repo": "miraquote-desktop"
+      }
+    ]
+  },
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win --linux"
+  },
+  "devDependencies": {
+    "electron": "^32.1.2",
+    "electron-builder": "^25.0.5"
+  }
+}
